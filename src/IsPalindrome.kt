@@ -1,3 +1,5 @@
+import kotlin.system.measureTimeMillis
+
 /**
  * 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
  *
@@ -86,8 +88,12 @@ class IsPalindrome {
 }
 
 fun main() {
-    println(IsPalindrome().solution(121))
-    println(IsPalindrome().solution2(1221))
-    println(IsPalindrome().solution3(-121))
-    println(IsPalindrome().solution4(10))
+    val time = measureTimeMillis { println(IsPalindrome().solution(121)) }
+    println("solution in $time ms")
+    val time2 = measureTimeMillis { println(IsPalindrome().solution2(1221)) }
+    println("solution2 in $time2 ms")
+    val time3 = measureTimeMillis { println(IsPalindrome().solution3(-121)) }
+    println("solution3 in $time3 ms")
+    val time4 = measureTimeMillis { println(IsPalindrome().solution4(10)) }
+    println("solution4 in $time4 ms")
 }
