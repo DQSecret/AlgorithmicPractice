@@ -24,7 +24,7 @@ class LongestCommonPrefix {
     fun solution(strs: Array<String>): String {
         // 准备参数
         var prefix = ""
-        // 1, 最长的
+        // 1, 最短的
         val minLengthStr = strs.minBy { it.length } ?: ""
         // 2, 循环判断
         for (i in 0..minLengthStr.lastIndex) {
@@ -106,16 +106,16 @@ fun main() {
     val strs5 = arrayOf("aa", "a")
     val strs6 = arrayOf("aca", "cba")
     val time = measureTimeMillis {
-        //        val lcp = LongestCommonPrefix().solution3(strs)
-//        println("strs lcp is $lcp")
-//        val lcp2 = LongestCommonPrefix().solution3(strs2)
-//        println("strs lcp2 is $lcp2")
-//        val lcp3 = LongestCommonPrefix().solution3(strs3)
-//        println("strs lcp3 is $lcp3")
-//        val lcp4 = LongestCommonPrefix().solution3(strs4)
-//        println("strs lcp4 is $lcp4")
-//        val lcp5 = LongestCommonPrefix().solution3(strs5)
-//        println("strs lcp5 is $lcp5")
+        val lcp = LongestCommonPrefix().solution3(strs)
+        println("strs lcp is $lcp")
+        val lcp2 = LongestCommonPrefix().solution3(strs2)
+        println("strs lcp2 is $lcp2")
+        val lcp3 = LongestCommonPrefix().solution3(strs3)
+        println("strs lcp3 is $lcp3")
+        val lcp4 = LongestCommonPrefix().solution3(strs4)
+        println("strs lcp4 is $lcp4")
+        val lcp5 = LongestCommonPrefix().solution3(strs5)
+        println("strs lcp5 is $lcp5")
         val lcp6 = LongestCommonPrefix().solution3(strs6)
         println("strs lcp6 is $lcp6")
     }
