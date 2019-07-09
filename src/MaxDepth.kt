@@ -1,5 +1,6 @@
 import model.TreeNode
 import java.util.*
+import kotlin.math.max
 import kotlin.system.measureTimeMillis
 
 /**
@@ -32,7 +33,7 @@ class MaxDepth {
         } else {
             val lh = solution(root.left)
             val rh = solution(root.right)
-            1 + Math.max(lh, rh)
+            1 + max(lh, rh)
         }
     }
 
