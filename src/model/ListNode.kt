@@ -1,5 +1,7 @@
 package model
 
+import java.util.*
+
 class ListNode(var `val`: Int) {
 
     var next: ListNode? = null
@@ -10,6 +12,21 @@ class ListNode(var `val`: Int) {
         } else {
             " -> " + next.toString()
         }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as ListNode
+
+        if (`val` != other.`val`) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return Objects.hashCode(`val`)
     }
 }
 
