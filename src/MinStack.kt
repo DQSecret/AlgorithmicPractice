@@ -135,10 +135,10 @@ class MinStack3 {
 }
 
 fun main() {
-    test3()
+    testMinStack3()
 }
 
-fun test1() {
+fun testMinStack1() {
     val obj = MinStack1()
     obj.push(-2)
     obj.push(0)
@@ -150,7 +150,7 @@ fun test1() {
     println("当前最小值: ${obj.getMin()}")
 }
 
-fun test2() {
+fun testMinStack2() {
     val obj = MinStack2()
     obj.push(1)
     obj.push(2)
@@ -162,7 +162,7 @@ fun test2() {
     println("当前栈顶值: ${obj.top()}")
 }
 
-fun test3() {
+fun testMinStack3() {
     val obj = MinStack3()
     obj.push(1)
     obj.push(3)

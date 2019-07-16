@@ -20,13 +20,29 @@ class ListNode(var `val`: Int) {
 
         other as ListNode
 
-        if (`val` != other.`val`) return false
+        if (`val` != other.`val` || next != other.next) return false
 
         return true
     }
 
     override fun hashCode(): Int {
         return Objects.hashCode(`val`)
+    }
+}
+
+fun convertListNode(nums: IntArray): ListNode {
+    val node = ListNode(-1)
+    convertListNode(node, nums, 0)
+    return node.next!!
+}
+
+fun convertListNode(node: ListNode, nums: IntArray, i: Int) {
+    if (i >= nums.size) {
+        return
+    } else {
+        val temp = ListNode(nums[i])
+        node.next = temp
+        convertListNode(temp, nums, i + 1)
     }
 }
 
@@ -37,4 +53,8 @@ fun main() {
         }
     }
     println(l)
+
+    val arr = intArrayOf(2, 4, 3)
+    val node = convertListNode(arr)
+    println(node)
 }
