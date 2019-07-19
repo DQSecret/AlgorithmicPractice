@@ -14,7 +14,7 @@ import model.convertListNode
 class ReverseList {
 
     /**
-     * 方法 1: 迭代 - 改变指向即可
+     * 方法 1: 迭代 - 改变指向即可: 其实就是头插法
      * 解释:
      *      [prev] - (已经反转过的)前一个值(可以理解为 null)
      *      [curr] - 循环体的指针,类似于数组中的 index
@@ -25,7 +25,7 @@ class ReverseList {
      *
      *      此时, prev = (1N) curr = (2345N)
      *
-     *      step5: curr(1) 保存 temp (345N)
+     *      step5: curr(2) 保存 temp (345N)
      *      step6: curr(2) 更新 next = (1N) 结果为 (21N)
      *      ......
      *      curr 最后一次,会指向到 N
