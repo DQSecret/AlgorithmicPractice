@@ -1,3 +1,5 @@
+package tencentselectpractice.easy
+
 import java.util.*
 import kotlin.system.measureTimeMillis
 

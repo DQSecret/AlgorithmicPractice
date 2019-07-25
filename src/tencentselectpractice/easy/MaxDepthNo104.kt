@@ -1,3 +1,5 @@
+package tencentselectpractice.easy
+
 import model.TreeNode
 import java.util.*
 import kotlin.math.max

@@ -1,3 +1,5 @@
+package tencentselectpractice.easy
+
 import kotlin.math.max
 import kotlin.system.measureTimeMillis
 
