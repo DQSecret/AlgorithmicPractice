@@ -30,13 +30,29 @@ class ListNode(var `val`: Int) {
     }
 }
 
+fun convertListNode2(vararg nums: Int): ListNode {
+    val node = ListNode(-1)
+    var temp: ListNode? = node
+    nums.forEach {
+        temp?.next = ListNode(it)
+        temp = temp?.next
+    }
+    return node.next!!
+}
+
 fun convertListNode(nums: IntArray): ListNode {
     val node = ListNode(-1)
     convertListNode(node, nums, 0)
     return node.next!!
 }
 
-fun convertListNode(node: ListNode, nums: IntArray, i: Int) {
+fun convertListNode(nums: MutableList<Int>): ListNode {
+    val node = ListNode(-1)
+    convertListNode(node, nums.toIntArray(), 0)
+    return node.next!!
+}
+
+private fun convertListNode(node: ListNode, nums: IntArray, i: Int) {
     if (i >= nums.size) {
         return
     } else {
