@@ -92,11 +92,44 @@ class LongestPalindrome {
     /**
      * 动态规划(DP): 解决这类 “最优子结构” 问题, 可以考虑使用 “动态规划”
      *
-     * 1、定义 “状态”
-     * 2、找到 “状态转移方程”
+     * l+1 < r-1 : 这个情况需要判断, 反之 r-l<=2 则不需要判断
+     * s[l][r] =  (s[l] == s[r]) && (r - l <= 2)
+     * if r-l>2 则需要判断子串, 故, 结论如下
+     *
+     * 1、定义 “状态” : s[l][r] 代表着, s 中 l..r 的子串是回文串
+     * 2、找到 “状态转移方程” : s[l][r] =  (s[l] == s[r]) && ( (r - l <= 2) || s[l+1][r-1])
      */
+    @Suppress("KDocUnresolvedReference")
     fun solution2(s: String): String {
+        val len = s.length
+        if (len <= 1) return s
 
+        var longest = 1 // 长度
+        var lps = s.substring(0, 1) // 子串
+        val dp = Array(len) { BooleanArray(len) } // 二维数组, 保存状态
+
+        for (r in 1 until len) {
+            for (l in 0 until r) {
+                /*
+                if (s[l] == s[r]) {
+                    if (r - l <= 2) {
+                        dp[l][r] = true
+                    } else {
+                        dp[l][r] = dp[l + 1][r - 1]
+                    }
+                }
+                转化为, 下面的代码
+                */
+                if (s[l] == s[r] && (r - l <= 2 || dp[l + 1][r - 1])) {
+                    dp[l][r] = true
+                    if (r - l + 1 > longest) {
+                        longest = r - l + 1
+                        lps = s.substring(l, r + 1)
+                    }
+                }
+            }
+        }
+        return lps
     }
 }
 
@@ -107,16 +140,16 @@ fun main() {
 fun testLongestPalindrome() {
     LongestPalindrome().also {
         var aims = "a"
-        println(it.solution1(aims))
+        println(it.solution2(aims))
         aims = "bb"
-        println(it.solution1(aims))
+        println(it.solution2(aims))
         aims = "ccc"
-        println(it.solution1(aims))
+        println(it.solution2(aims))
         aims = "ddde"
-        println(it.solution1(aims))
+        println(it.solution2(aims))
         aims = "efgfed"
-        println(it.solution1(aims))
+        println(it.solution2(aims))
         aims = "hiihqwe"
-        println(it.solution1(aims))
+        println(it.solution2(aims))
     }
 }
