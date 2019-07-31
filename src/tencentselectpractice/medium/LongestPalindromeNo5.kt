@@ -131,6 +131,13 @@ class LongestPalindrome {
         }
         return lps
     }
+
+    /**
+     * Manacher 算法
+     */
+    fun solution3(s: String): String {
+        TODO("马拉车算法, 一知半解, 之后再说")
+    }
 }
 
 fun main() {
