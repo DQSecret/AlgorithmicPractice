@@ -21,7 +21,7 @@ class ContainsDuplicate {
     /**
      * 1, 暴力循环 O(n2)
      * 2, hash O(n)
-     * 3, 先排序O(nLgn), 再遍历 O(n)
+     * 3, 先排序O(n·logn), 再遍历 O(n)
      */
     fun solution(nums: IntArray): Boolean {
         nums.sort()

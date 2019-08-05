@@ -2,6 +2,7 @@
   <dictionary name="leqv">
     <words>
       <w>atoi</w>
+      <w>logn</w>
       <w>manacher</w>
     </words>
   </dictionary>
