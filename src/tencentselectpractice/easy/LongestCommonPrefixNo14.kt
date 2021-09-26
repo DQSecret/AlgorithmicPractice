@@ -1,5 +1,6 @@
 package tencentselectpractice.easy
 
+import kotlin.math.min
 import kotlin.system.measureTimeMillis
 
 /**
@@ -27,7 +28,7 @@ class LongestCommonPrefix {
         // 准备参数
         var prefix = ""
         // 1, 最短的
-        val minLengthStr = strs.minBy { it.length } ?: ""
+        val minLengthStr = strs.minByOrNull { it.length } ?: ""
         // 2, 循环判断
         for (i in 0..minLengthStr.lastIndex) {
             val aims = minLengthStr[i]
@@ -72,7 +73,7 @@ class LongestCommonPrefix {
         val prefixSB = StringBuilder()
         // 3, 求最短列数
         var length = Int.MAX_VALUE
-        strs.forEach { length = Math.min(length, it.length) }
+        strs.forEach { length = min(length, it.length) }
         // 4, 循环列判断
         for (i in 0 until length) { // 列循环
 

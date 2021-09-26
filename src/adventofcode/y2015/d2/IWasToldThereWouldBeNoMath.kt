@@ -1032,7 +1032,7 @@ class IWasToldThereWouldBeNoMath {
         }
 
         fun getMinS(): Int {
-            return listOf(w * l, l * h, h * w).min() ?: 0
+            return listOf(w * l, l * h, h * w).minOrNull() ?: 0
         }
 
         fun getV(): Int {
@@ -1040,7 +1040,7 @@ class IWasToldThereWouldBeNoMath {
         }
 
         fun getRibbon(): Int {
-            return listOf(w, l, h).sorted().take(2).sumBy { it * 2 }
+            return listOf(w, l, h).sorted().take(2).sumOf { it * 2 }
         }
     }
 
