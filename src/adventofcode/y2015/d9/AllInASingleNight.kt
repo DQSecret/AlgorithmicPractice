@@ -2,6 +2,7 @@ package adventofcode.y2015.d9
 
 import adventofcode.base.Day
 import adventofcode.util.Runner
+import java.util.*
 import kotlin.time.ExperimentalTime
 
 /**
@@ -91,6 +92,8 @@ class AllInASingleNight : Day(2015, 9) {
      * 1. 已选路径
      * 2. 可选择项
      * 3. 终止条件
+     * 目的:
+     * 是为了生成全排列组合,但是Kotlin没有直接使用的方法,所以只能用DFS自己来搞了
      */
     private fun backtrack(
         all: MutableList<List<String>>,
@@ -116,7 +119,56 @@ class AllInASingleNight : Day(2015, 9) {
         }
     }
 
+    /**
+     * 最开始纯暴力的想法(两层for循环)行不通, 最后发现一定需要实现全排列, 这下就没有捷径了
+     * PS:没想到最终的代码写起来很少,很优雅,嘿嘿嘿~
+     * 其实关于数据处理的部分,可以优化到[getSum]中
+     */
+    private fun native(): Int {
+        val place = mutableSetOf<String>()
+        val distances = mutableMapOf<String, Int>()
+        inputList.flatMap { it.split(" ") }
+            .chunked(5) {
+                // 正向反向都存储,方便后续查找
+                place.add(it[0])
+                place.add(it[2])
+                distances[it[0] + it[2]] = it[4].toInt()
+                distances[it[2] + it[0]] = it[4].toInt()
+            }
+        // 全排列组合后,找最小值
+        return place.toList().permutations()
+            .minOf { path ->
+                path.windowed(2) { it.first() + it.last() }
+                    .fold(0) { acc, s -> acc + distances.getOrDefault(s, 0) }
+            }
+    }
+
+    /**
+     * 由于Kotlin官方没有生成全排列组合的方法, 故在网上找的方法, 其实还是递归(暴力). o(╯□╰)o
+     */
+    private fun <V> List<V>.permutations(): List<List<V>> {
+        val retVal: MutableList<List<V>> = mutableListOf()
+        fun generate(k: Int, list: List<V>) {
+            // If only 1 element, just output the array
+            if (k == 1) {
+                retVal.add(list.toList())
+            } else {
+                for (i in 0 until k) {
+                    generate(k - 1, list)
+                    if (k % 2 == 0) {
+                        Collections.swap(list, i, k - 1)
+                    } else {
+                        Collections.swap(list, 0, k - 1)
+                    }
+                }
+            }
+        }
+        generate(this.count(), this.toList())
+        return retVal
+    }
+
     override fun partOne(): Any {
+        "纯暴力算法: {${native()}}".also { println(it) }
         return "The shortest distance is: {${getShortestDistance()}}"
     }
 
