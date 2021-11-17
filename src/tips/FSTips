@@ -1,0 +1,5 @@
+暴力搜索算法 (DFS，BFS)
+由于y2015-d9所启发,了解到回溯算法,其中最常用的就是(DFS，BFS)
+首先说 DFS: 深度优先搜索算法:Depth First Search
+详见: https://labuladong.gitee.io/algo/4/29/104/
+练习题,在 forcesearch 包下
