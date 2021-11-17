@@ -1,7 +1,10 @@
 <component name="ProjectDictionaryState">
-    <dictionary name="DQ">
-        <words>
-            <w>nums</w>
-        </words>
-    </dictionary>
+  <dictionary name="DQ">
+    <words>
+      <w>atoi</w>
+      <w>logn</w>
+      <w>manacher</w>
+      <w>nums</w>
+    </words>
+  </dictionary>
 </component>
