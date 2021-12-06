@@ -25,40 +25,56 @@ class CanPartitionKSubsets2 {
         // 最后所有的木桶
         val buckets = IntArray(k)
         // 执行回溯 PS: 先降序排列一下,是的裁剪条件,尽量命中
-        return backtrack(buckets, 0, nums.apply { sortDescending() }, average)
+        return backtrack(buckets, 0, nums.apply { sortDescending() }, 0, average)
     }
 
     /**
+     * 把自己当做木桶去审视, 遍历每个数字, 判断要不要装入当前数字
      * @param index: 木桶的下标
+     * @param start: 从哪个数字开始遍历 - 优化项
      */
-    private fun backtrack(buckets: IntArray, index: Int, nums: IntArray, average: Int): Boolean {
-        // 结束条件: index 超出 木桶个数
+    private fun backtrack(
+        buckets: IntArray,
+        index: Int,
+        nums: IntArray,
+        start: Int,
+        average: Int
+    ): Boolean {
+        // 结束条件: index超出木桶个数,则一定全部OK了
         if (index == buckets.size) {
-            // 判断每个木桶中的总和是否为平均数
-            return buckets.all { it == average }
+            return true
         }
-        // 当前木桶,遍历数字,以判断要不要装入这个数字
-        for (i in 0..nums.lastIndex) {
-            val temp = nums[i]
-            // 裁剪枝叶: 如果桶内数字和超过平均值,则下一个
-            if (buckets[index] + temp > average) continue
-            // 裁剪枝叶: 如果是0,则代表已经是用过了
-            if (temp == 0) continue
-            // 做出选择
-            buckets[index] += temp
-            nums[i] = 0
-            // 如果当前桶满了,则下一个桶
-            if (buckets[index] == average) {
-                return backtrack(buckets, index + 1, nums, average)
-            } else {
-                if (backtrack(buckets, index, nums, average)) {
-                    return true
-                } else {
-                    // 撤销选择
-                    buckets[index] -= temp
-                    nums[i] = temp
-                }
+
+        // 回溯条件, 装满了当前桶，递归穷举下一个桶的选择
+        if (buckets[index] == average) {
+            return backtrack(buckets, index + 1, nums, 0, average)
+        }
+
+        // 这个开始的下标0,是可以优化的
+        for (i in start..nums.lastIndex) {
+            // 1. 剪枝
+            if (nums[i] == 0) {
+                // nums[i] 已经被装入别的桶中
+                continue
             }
+            if (buckets[index] + nums[i] > average) {
+                // 当前桶装不下 nums[i]
+                continue
+            }
+
+            // 2. 做选择, 将 nums[i] 装入当前桶中
+            val temp = nums[i]
+            nums[i] = 0
+            buckets[index] += temp
+
+            // 3. 递归穷举下一个数字是否装入当前桶
+            if (backtrack(buckets, index, nums, i + 1, average)) {
+                return true
+            }
+
+            // 4. 撤销选择
+            buckets[index] -= temp
+            nums[i] = temp
         }
         return false
     }
