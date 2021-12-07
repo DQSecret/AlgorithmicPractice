@@ -22,37 +22,21 @@ class Subsets {
      * output:  [ [],[1],[2],[3],[1,3],[2,3],[1,2],[1,2,3] ]
      */
     fun subsets(nums: IntArray): List<List<Int>> {
-        for (size in 0..nums.size) {
-            when (size) {
-                0 -> {
-                    result.add(emptyList())
-                }
-                nums.size -> {
-                    result.add(nums.toList())
-                }
-                else -> {
-                    backtrack(nums, 0, size, mutableListOf())
-                }
-            }
-        }
+        backtrack(nums, 0, mutableListOf())
         return result
     }
 
-    private fun backtrack(nums: IntArray, index: Int, size: Int, sets: MutableList<Int>) {
-        if (sets.size >= size) {
-            result.add(sets.toList())
-            return
-        }
+    private fun backtrack(nums: IntArray, index: Int, sets: MutableList<Int>) {
+        result.add(sets.toList())
         for (i in index..nums.lastIndex) {
             sets.add(nums[i])
-            backtrack(nums, i + 1, size, sets)
-            sets.remove(nums[i])
+            backtrack(nums, i + 1, sets)
+            sets.removeLast()
         }
     }
 }
 
 fun main() {
-    Subsets().run {
-        println(subsets(intArrayOf(1, 2, 3)))
-    }
+    println(Subsets().subsets(intArrayOf(1, 2)))
+    println(Subsets().subsets(intArrayOf(1, 2, 3)))
 }
