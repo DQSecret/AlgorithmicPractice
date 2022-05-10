@@ -2,7 +2,7 @@ package model
 
 import java.util.*
 
-class ListNode(var `val`: Int) {
+class ListNode(var `val`: Int) : Comparable<ListNode> {
 
     var next: ListNode? = null
 
@@ -27,6 +27,10 @@ class ListNode(var `val`: Int) {
 
     override fun hashCode(): Int {
         return Objects.hashCode(`val`)
+    }
+
+    override fun compareTo(other: ListNode): Int {
+        return this.`val` - other.`val`
     }
 }
 

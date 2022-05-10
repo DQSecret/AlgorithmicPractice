@@ -1,7 +1,11 @@
 package algocheatsheet.datastructure.linkedlist
 
+import algocheatsheet.datastructure.customdesign.MinPQ
 import model.ListNode
 import model.convertListNode2
+import java.util.*
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
 /**
  * 合并K个升序链表 - [MergeTwoLists]的升级版
@@ -70,13 +74,77 @@ class MergeKLists {
         }
         return dummy.next
     }
+
+    /**
+     * 东哥给的思路:
+     *  1. 这里我们就要用到 *优先级队列(二叉堆)* 这种数据结构
+     *  2. 把链表节点放入一个最小堆,就可以每次获得k个节点中的最小节点
+     *
+     * 先使用系统的 优先级队列-[java.util.PriorityQueue] 看看效果
+     */
+    fun solution2(lists: Array<ListNode?>): ListNode? {
+        // 特殊情况
+        if (lists.isEmpty()) return null
+        // 虚拟头结点
+        val dummy = ListNode(-1)
+        var point: ListNode? = dummy
+        // 优先级队列，最小堆:由小到大排序
+        val pq = PriorityQueue(lists.size) { o1: ListNode, o2: ListNode -> o1.`val` - o2.`val` }
+        // 将 k 个链表的头结点加入最小堆, 会实现自动排序
+        lists.filterNotNull().forEach { head -> pq.add(head) }
+        while (!pq.isEmpty()) {
+            // 获取最小节点，接到结果链表中
+            val node = pq.poll()
+            point?.next = node
+            if (node.next != null) {
+                pq.add(node.next)
+            }
+            // p 指针不断前进
+            point = point?.next
+        }
+        // 直接返回第一个即可
+        return dummy.next
+    }
+
+    /**
+     * 东哥给的思路:
+     *  1. 这里我们就要用到 *优先级队列(二叉堆)* 这种数据结构
+     *  2. 把链表节点放入一个最小堆,就可以每次获得k个节点中的最小节点
+     *
+     * 自己实现 优先级&二叉堆-[MinPQ] 看看效果
+     */
+    fun solution3(lists: Array<ListNode?>): ListNode? {
+        // 特殊情况
+        if (lists.isEmpty()) return null
+        // 虚拟头结点
+        val dummy = ListNode(-1)
+        var point: ListNode? = dummy
+        // 优先级队列，最小堆:由小到大排序
+        val pq = MinPQ<ListNode>(lists.size)
+        // 将 k 个链表的头结点加入最小堆
+        lists.filterNotNull().forEach { pq.insert(it) }
+        // 循环移动指针
+        while (!pq.isEmpty()) {
+            // 获取最小节点，接到结果链表中
+            val node = pq.cullTop() // poll:取出&删除
+            point?.next = node
+            // 将取出的最小值的下一个,插入到最小堆,会触发自动排序
+            node.next?.let { pq.insert(it) }
+            // point 指针不断前进
+            point = point?.next
+        }
+        return dummy.next
+    }
 }
 
+@ExperimentalTime
 fun main() {
     val l1 = convertListNode2(1, 4, 5)
     val l2 = convertListNode2(1, 3, 4)
     val l3 = convertListNode2(2, 6)
-    MergeKLists().solution(arrayOf(l1, l2, l3)).also {
-        println(it)
+    with(MergeKLists()) {
+//        measureTimedValue { solution(arrayOf(l1, l2, l3)) }.also { println(it) }
+//        measureTimedValue { solution2(arrayOf(l1, l2, l3)) }.also { println(it) }
+        measureTimedValue { solution3(arrayOf(l1, l2, l3)) }.also { println(it) }
     }
 }
