@@ -1,6 +1,6 @@
 package model
 
-import java.util.*
+import java.util.Objects
 
 class ListNode(var `val`: Int) : Comparable<ListNode> {
 
@@ -34,14 +34,14 @@ class ListNode(var `val`: Int) : Comparable<ListNode> {
     }
 }
 
-fun convertListNode2(vararg nums: Int): ListNode {
+fun convertListNode2(vararg nums: Int): ListNode? {
     val node = ListNode(-1)
     var temp: ListNode? = node
     nums.forEach {
         temp?.next = ListNode(it)
         temp = temp?.next
     }
-    return node.next!!
+    return node.next
 }
 
 fun convertListNode(nums: IntArray): ListNode {
