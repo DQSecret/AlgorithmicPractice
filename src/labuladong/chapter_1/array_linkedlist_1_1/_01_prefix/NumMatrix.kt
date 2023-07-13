@@ -1,4 +1,4 @@
-package labuladong._01.array._01_prefix
+package labuladong.chapter_1.array_linkedlist_1_1._01_prefix
 
 /**
  * 给定一个二维矩阵 matrix，以下类型的多个请求：

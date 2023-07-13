@@ -1,4 +1,4 @@
-package labuladong._01.array._02_diff
+package labuladong.chapter_1.array_linkedlist_1_1._02_diff
 
 /**
  * 示例:

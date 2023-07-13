@@ -1,4 +1,4 @@
-package labuladong._01.array._01_prefix
+package labuladong.chapter_1.array_linkedlist_1_1._01_prefix
 
 /**
  * 输入：

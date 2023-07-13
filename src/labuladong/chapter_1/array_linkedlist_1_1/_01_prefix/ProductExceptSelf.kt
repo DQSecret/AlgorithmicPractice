@@ -1,4 +1,4 @@
-package labuladong._01.array._01_prefix
+package labuladong.chapter_1.array_linkedlist_1_1._01_prefix
 
 /**
  * 给你一个整数数组 nums，返回 数组 answer ，其中 answer[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积 。
