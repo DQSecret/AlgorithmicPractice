@@ -20,7 +20,7 @@ class ListNode(var `val`: Int) : Comparable<ListNode> {
 
         other as ListNode
 
-        if (`val` != other.`val` || next != other.next) return false
+        if (`val` != other.`val`) return false
 
         return true
     }
