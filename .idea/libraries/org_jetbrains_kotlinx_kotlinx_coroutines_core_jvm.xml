@@ -2,7 +2,7 @@
   <library name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm" type="repository">
     <properties maven-id="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:RELEASE" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.2/kotlinx-coroutines-core-jvm-1.7.2.jar!/" />
+      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.3/kotlinx-coroutines-core-jvm-1.7.3.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/annotations/23.0.0/annotations-23.0.0.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.20/kotlin-stdlib-common-1.8.20.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.20/kotlin-stdlib-jdk8-1.8.20.jar!/" />
@@ -10,7 +10,7 @@
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.20/kotlin-stdlib-jdk7-1.8.20.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.2/kotlinx-coroutines-core-jvm-1.7.2-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.3/kotlinx-coroutines-core-jvm-1.7.3-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/annotations/23.0.0/annotations-23.0.0-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.20/kotlin-stdlib-common-1.8.20-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.20/kotlin-stdlib-jdk8-1.8.20-javadoc.jar!/" />
@@ -18,7 +18,7 @@
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.20/kotlin-stdlib-jdk7-1.8.20-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.2/kotlinx-coroutines-core-jvm-1.7.2-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.3/kotlinx-coroutines-core-jvm-1.7.3-sources.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/annotations/23.0.0/annotations-23.0.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.20/kotlin-stdlib-common-1.8.20-sources.jar!/" />
       <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.20/kotlin-stdlib-jdk8-1.8.20-sources.jar!/" />
